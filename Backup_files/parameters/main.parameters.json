@@ -1,0 +1,37 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "location": {
+        "value": "westeurope"
+      },
+      "vnetName": {
+        "value": "mislav-vnet"
+      },
+      "vnetAddressPrefix": {
+        "value": "10.0.0.0/16"
+      },
+      "subnet1Name": {
+        "value": "BackendSubnet"
+      },
+      "subnet1AddressPrefix": {
+        "value": "10.0.0.0/24"
+      },
+      "routeTableName": {
+        "value": "No-Outbound-route-table"
+      },
+      "accessTier": {
+        "value": "Cool"
+      },
+      "skuName": {
+        "value": "Standard_LRS"
+      },
+      "storageAccountName": {
+        "value": "mislavfilesbicep"
+      },
+      "fileShareName": {
+        "value": "mislavfslogix"
+      }
+    }
+  }
+  

@@ -1,0 +1,50 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "location": {
+        "value": "westeurope"
+      },
+      "storageAccountRgName": {
+        "value": "RG-MISLAV-BICEP-SA-WEU"
+    },
+      "vnetRgName": {
+        "value": "RG-MISLAV-BICEP-VNET-WEU"
+    },
+      "vnetName": {
+        "value": "mislav-vnet"
+      },
+      "vnetAddressPrefix": {
+        "value": "10.0.0.0/16"
+      },
+      "subnet1Name": {
+        "value": "BackendSubnet"
+      },
+      "subnet1AddressPrefix": {
+        "value": "10.0.0.0/24"
+      },
+      "routeTableName": {
+        "value": "No-Outbound-route-table"
+      },
+      "accessTier": {
+        "value": "Cool"
+      },
+      "skuName": {
+        "value": "Standard_LRS"
+      },
+      "storageAccountName": {
+        "value": "mislavfilesbicep"
+      },
+      "fileShareName": {
+        "value": "mislavfslogix"
+      },
+      "hubVnetResourceId": {
+        "value": "/subscriptions/f3be49af-c543-42e2-9b6d-6dce773995ff/resourceGroups/RG-MISLAV-VNET-WEU-01/providers/Microsoft.Network/virtualNetworks/TEST-MISLAV-VNET1"
+      },
+      "hubVnetName": {
+        "value": "TEST-MISLAV-VNET1"
+      }
+    }
+  }
+
+  
