@@ -18,7 +18,7 @@ param fileShareName string
 resource storageAccount 'Microsoft.Storage/storageAccounts@2021-02-01' = {
   name: storageAccountName
   location: location
-  kind: 'StorageV2'
+  kind: 'FileStorage'
   sku: {
     name: skuName
   }

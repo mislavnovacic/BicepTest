@@ -44,7 +44,7 @@ param hubVnetName string
 var resourceLocation = location
 
 // Storage Account module deployment
-module storageAccountModule 'module_storageaccount/main.bicep' = {
+module storageAccountModule 'module_storageaccount/sa.bicep' = {
   name: 'storageAccountDeployment'
   scope: resourceGroup(storageAccountRgName)
   params: {
@@ -57,7 +57,7 @@ module storageAccountModule 'module_storageaccount/main.bicep' = {
 }
 
 // VNet module deployment
-module vnetModule 'module_vnet/main.bicep' = {
+module vnetModule 'module_vnet/vnet.bicep' = {
   name: 'vnetDeployment'
   scope: resourceGroup(vnetRgName)
   params: {

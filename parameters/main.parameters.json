@@ -30,7 +30,7 @@
         "value": "Cool"
       },
       "skuName": {
-        "value": "Standard_LRS"
+        "value": "Premium_LRS"
       },
       "storageAccountName": {
         "value": "mislavfilesbicep"
