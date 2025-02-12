@@ -1,0 +1,28 @@
+name: Deploy Bicep to Azure
+
+on:
+  push:
+    branches:
+      - main  # Adjust to your branch if needed
+
+  workflow_dispatch:  # Allows manual trigger from GitHub UI
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Install Azure PowerShell Module
+        run: |
+          pwsh -Command Install-Module -Name Az -Force -AllowClobber -Scope CurrentUser
+
+      - name: Run PowerShell Deployment Script
+        run: pwsh -File ./deploy.ps1
