@@ -25,4 +25,4 @@ jobs:
           pwsh -Command Install-Module -Name Az -Force -AllowClobber -Scope CurrentUser
 
       - name: Run PowerShell Deployment Script
-        run: pwsh -File ./deploy.ps1
+        run: pwsh -File ./Deploy.ps1
