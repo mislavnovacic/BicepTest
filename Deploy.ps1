@@ -1,9 +1,16 @@
-# - DEPLOY RESOURCE GROUPS
+# - Ensure Azure Login
+if (-not (Get-AzContext)) {
+    Write-Host "Logging in to Azure..."
+    Connect-AzAccount
+}
+
+# - Define Resource Groups
 $resourceGroups = @(
     @{ Name = "RG-MISLAV-BICEP-VNET-WEU"; Location = "westeurope" },
     @{ Name = "RG-MISLAV-BICEP-SA-WEU"; Location = "westeurope" }
 )
 
+# - Deploy Resource Groups if they do not exist
 foreach ($rg in $resourceGroups) {
     if (-not (Get-AzResourceGroup -Name $rg.Name -ErrorAction SilentlyContinue)) {
         Write-Host "Creating Resource Group: $($rg.Name) in location $($rg.Location)"
@@ -13,11 +20,23 @@ foreach ($rg in $resourceGroups) {
     }
 }
 
-# - DEPLOY THE BICEP TEMPLATE
-# - Define parameters
-$TemplateFile = ".\main.bicep"
-$ParameterFile = ".\parameters\main.parameters.json"
+# - Define Deployment Parameters
+$TemplateFile = "./main.bicep"
+$ParameterFile = "./parameters/main.parameters.json"
 $Location = "westeurope"
-# - Deploy the Bicep template
-#New-AzDeployment -Location $Location -TemplateFile $TemplateFile -TemplateParameterObject $Parameters -TemplateParameterFile $ParameterFile #-WhatIf -verbose
+
+# - Check if Bicep & Parameter Files Exist
+if (!(Test-Path $TemplateFile)) {
+    Write-Host "Error: Bicep file not found at $TemplateFile"
+    exit 1
+}
+if (!(Test-Path $ParameterFile)) {
+    Write-Host "Error: Parameter file not found at $ParameterFile"
+    exit 1
+}
+
+# - Deploy the Bicep Template
+Write-Host "Deploying Bicep template: $TemplateFile with parameters from $ParameterFile"
 New-AzDeployment -Location $Location -TemplateFile $TemplateFile -TemplateParameterFile $ParameterFile -Verbose
+
+Write-Host "✅ Deployment completed successfully."
